@@ -1,0 +1,25 @@
+import { lazy, Suspense } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Toaster } from 'sonner';
+import { WorkspaceProvider } from '@/hooks/useWorkspace';
+import WorkspaceLayout from '@/components/layout/WorkspaceLayout';
+import ErrorBoundary from '@/components/features/ErrorBoundary';
+import Overview from '@/pages/Overview';
+const Events=lazy(()=>import('@/pages/Events'));
+const Copilot=lazy(()=>import('@/pages/Copilot'));
+const Studio=lazy(()=>import('@/pages/Studio'));
+const Gifts=lazy(()=>import('@/pages/Gifts'));
+const Budget=lazy(()=>import('@/pages/Budget'));
+const Guests=lazy(()=>import('@/pages/Guests'));
+const Simulation=lazy(()=>import('@/pages/Simulation'));
+const Community=lazy(()=>import('@/pages/Community'));
+const Impact=lazy(()=>import('@/pages/Impact'));
+const Memories=lazy(()=>import('@/pages/Memories'));
+const Calendar=lazy(()=>import('@/pages/Calendar'));
+const Settings=lazy(()=>import('@/pages/Settings'));
+const Help=lazy(()=>import('@/pages/Help'));
+const Landing=lazy(()=>import('@/pages/Landing'));
+const Auth=lazy(()=>import('@/pages/Auth'));
+const Invitation=lazy(()=>import('@/pages/Invitation'));
+const NotFound=lazy(()=>import('@/pages/NotFound'));
+export default function App(){return <ErrorBoundary><WorkspaceProvider><BrowserRouter><Suspense fallback={<div role="status" className="p-12 text-center text-primary">Loading your LifeSphere workspace...</div>}><Routes><Route path="/welcome" element={<Landing/>}/><Route path="/login" element={<Auth/>}/><Route path="/invite/:id" element={<Invitation/>}/><Route element={<WorkspaceLayout/>}><Route index element={<Overview/>}/><Route path="/events" element={<Events/>}/><Route path="/copilot" element={<Copilot/>}/><Route path="/studio" element={<Studio/>}/><Route path="/gifts" element={<Gifts/>}/><Route path="/budget" element={<Budget/>}/><Route path="/guests" element={<Guests/>}/><Route path="/simulation" element={<Simulation/>}/><Route path="/community" element={<Community/>}/><Route path="/impact" element={<Impact/>}/><Route path="/memories" element={<Memories/>}/><Route path="/calendar" element={<Calendar/>}/><Route path="/settings" element={<Settings/>}/><Route path="/help" element={<Help/>}/><Route path="*" element={<NotFound/>}/></Route></Routes></Suspense></BrowserRouter><Toaster richColors position="bottom-right"/></WorkspaceProvider></ErrorBoundary>;}

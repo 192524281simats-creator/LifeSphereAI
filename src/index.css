@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;650;700;750;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+ :root { --background: 252 33% 98%; --foreground: 247 24% 18%; --ink: 247 31% 13%; --primary: 260 52% 55%; --primary-foreground: 0 0% 100%; --secondary: 260 55% 96%; --secondary-foreground: 260 45% 38%; --muted: 250 25% 96%; --muted-foreground: 248 10% 43%; --accent: 334 62% 93%; --accent-foreground: 334 40% 35%; --border: 250 22% 92%; --input: 250 22% 88%; --ring: 260 52% 55%; --card: 0 0% 100%; --card-foreground: 247 24% 18%; --success: 157 57% 32%; --warning: 37 65% 35%; --destructive: 350 60% 47%; --radius: 0.85rem; }
+ * { @apply border-border; } body { @apply bg-background text-foreground font-sans antialiased; margin: 0; font-size: 16px; } button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; } button:focus-visible, a:focus-visible { @apply outline-none ring-2 ring-primary ring-offset-2; } button:disabled { @apply opacity-40 cursor-not-allowed; } h1,h2,h3 { letter-spacing: -0.035em; } input,select,textarea { @apply bg-card border border-input rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-primary; } label { @apply block text-sm font-medium mb-2; }
+}
+@layer components {
+ .panel { @apply rounded-2xl border border-border bg-card; }
+ .btn { @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5 active:translate-y-0; }
+ .btn-secondary { @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-border bg-card px-4 py-2.5 text-sm font-medium hover:bg-secondary; }
+ .eyebrow { @apply text-[11px] font-semibold uppercase tracking-[0.13em] text-muted-foreground; }
+ .section-title { @apply text-lg font-semibold; }
+ .page-title { @apply text-3xl font-bold; }
+ .tag { @apply inline-flex items-center gap-1.5 rounded-full bg-secondary px-2.5 py-1 text-xs font-medium text-secondary-foreground; }
+}
+::-webkit-scrollbar { width: 5px; } ::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 8px; }

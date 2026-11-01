@@ -1,0 +1,4 @@
+import { Component, type ErrorInfo, type ReactNode } from 'react';
+interface Props {children:ReactNode;}
+interface State {failed:boolean;}
+export default class ErrorBoundary extends Component<Props,State>{state:State={failed:false};static getDerivedStateFromError(){return {failed:true};}componentDidCatch(error:Error,info:ErrorInfo){console.error('LifeSphere workspace error',error,info);}render(){if(this.state.failed)return <main className="mx-auto max-w-lg p-12"><h1 className="text-2xl font-bold">The workspace could not load.</h1><p className="my-5 text-muted-foreground">Stored demo data may be invalid. You can restore the synthetic records; local changes will be removed.</p><button className="btn" onClick={()=>{localStorage.removeItem('lifesphere-demo-v1');this.setState({failed:false});}}>Restore demo workspace</button></main>;return this.props.children;}}
